@@ -1,95 +1,83 @@
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --mainColor: #FF512F;
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --mainColor: #ff512f;
 }
 
-*:focus{
-    outline: none;
+*:focus {
+  outline: none;
 }
 
-.landingPage{
-    color: var(--mainColor);
-    margin-top: 30vh;
-    width: 50%;
-    margin:  20vh auto;
-   
+.landingPage {
+  color: var(--mainColor);
+  width: 50%;
+  margin: 20vh auto;
+  border: 2px solid #ff512f;
+  padding: 50px 0 0 0;
+  border-radius: 20px;
 }
 
-.landingPage h2{
-    font-size: 2.7em;
-    text-align: center;
+.landingPage h2 {
+  font-size: 2.7em;
+  text-align: center;
 }
 
-.landingPage p{
-    width: 70%;
-    margin: 1em auto;
-    text-align: center;
-    font-size: 1.1em;
-    
+.landingPage p {
+  width: 70%;
+  margin: 1em auto;
+  text-align: center;
+  font-size: 1.1em;
 }
 
-.usersName{
-    text-align: center;
+.usersName {
+  text-align: center;
 }
 
-.usersName input{
-    width: 76%;
-    font-size: 1.4em;
-    color: black;
-    padding: 14px 20px;
-    border: 1px solid var(--mainColor);
-    border-radius: 1000px;
-    
-    
-
+.usersName input {
+  width: 76%;
+  font-size: 1.4em;
+  color: black;
+  padding: 14px 20px;
+  border: 1px solid var(--mainColor);
+  border-radius: 1000px;
 }
 
-#userSocialMedia{
-    margin: 2em 0;
+#userSocialMedia {
+  margin: 2em 0;
 }
 
-#userSocialMedia section input{
-   
-   width: 40%;
-   display: inline-block;
-   margin: 0 1em;
-   font-size: 1em;
-   color: black;
-   padding: 14px 20px;
-   border: 1px solid var(--mainColor);
-   border-radius: 1000px;
-   color: var(--mainColor);
-
-
-   
+#userSocialMedia section input {
+  width: 40%;
+  display: inline-block;
+  margin: 0 1em;
+  font-size: 1em;
+  color: black;
+  padding: 14px 20px;
+  border: 1px solid var(--mainColor);
+  border-radius: 1000px;
+  color: var(--mainColor);
 }
 
-
-#userSocialMedia section, #userSocialMedia #goButton{
-    text-align: left;
-    width: 76%;
-    margin: 0 auto;
+#userSocialMedia section,
+#userSocialMedia #goButton {
+  text-align: left;
+  width: 76%;
+  margin: 0 auto;
 }
 
-#userSocialMedia p{
-    text-align: left;
-
+#userSocialMedia p {
+  text-align: left;
 }
 
-#userSocialMedia #goButton button{
-    width: 50%;
-    margin: 2em 1em;
-    padding:  13px;
-    background-color: var(--mainColor);
-    border: 3px solid white;
-    border-radius: 100px;
-    font-size: 1.3em;
-    color: white;
+#userSocialMedia #goButton button {
+  width: 50%;
+  margin: 2em 1em;
+  padding: 13px;
+  background-color: var(--mainColor);
+  border: 3px solid white;
+  border-radius: 100px;
+  font-size: 1.3em;
+  color: white;
 }
-
-
-
-

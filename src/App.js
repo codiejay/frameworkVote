@@ -1,13 +1,14 @@
 import React from 'react';
-import Landing from "./Landing/Landing"
-import './App.css';
+import Landing from './components/Landing/Landing';
+import '../src/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Landing />  
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Landing />
+      </div>
+    );
+  }
 }
-
 export default App;
