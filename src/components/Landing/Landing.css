@@ -12,10 +12,10 @@
 
 .landingPage {
   color: var(--mainColor);
-  width: 50%;
-  margin: 20vh auto;
+  padding: 10px;
+  margin: auto;
   border: 2px solid #ff512f;
-  padding: 50px 0 0 0;
+  text-align: center;
   border-radius: 20px;
 }
 
@@ -25,8 +25,7 @@
 }
 
 .landingPage p {
-  width: 70%;
-  margin: 1em auto;
+
   text-align: center;
   font-size: 1.1em;
 }
@@ -35,42 +34,15 @@
   text-align: center;
 }
 
-.usersName input {
-  width: 76%;
-  font-size: 1.4em;
-  color: black;
-  padding: 14px 20px;
-  border: 1px solid var(--mainColor);
-  border-radius: 1000px;
-}
-
-#userSocialMedia {
-  margin: 2em 0;
-}
-
-#userSocialMedia section input {
-  width: 40%;
-  display: inline-block;
-  margin: 0 1em;
-  font-size: 1em;
-  color: black;
-  padding: 14px 20px;
-  border: 1px solid var(--mainColor);
-  border-radius: 1000px;
-  color: var(--mainColor);
-}
 
 #userSocialMedia section,
-#userSocialMedia #goButton {
-  text-align: left;
-  width: 76%;
-  margin: 0 auto;
-}
+
 
 #userSocialMedia p {
   text-align: left;
 }
 
+<<<<<<< HEAD
 #userSocialMedia #goButton button {
   width: 50%;
   margin: 2em 1em;
@@ -82,3 +54,8 @@
   color: white;
   cursor: pointer;
 }
+=======
+@media(max-width:600px) {
+  .landingPage {}
+}
+>>>>>>> 0853ed9da61fea7bae5caee85a1a815a23357cb3
