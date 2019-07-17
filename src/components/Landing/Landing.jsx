@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Landing/Landing.css';
-const Landing = () => {
+const Landing = ({ handleSubmit }) => {
   return (
     <div className="landingPage">
       <h2>AYE, THERE DEV!</h2>
@@ -19,7 +19,7 @@ const Landing = () => {
           <input placeholder="Twitter Handle" />
         </section>
         <div id="goButton">
-          <button> Let's Go!>> </button>
+          <button onClick={handleSubmit}> Let's Go!>> </button>
         </div>
       </div>
     </div>
