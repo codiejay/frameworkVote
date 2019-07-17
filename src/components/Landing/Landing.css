@@ -25,7 +25,6 @@
 }
 
 .landingPage p {
-
   text-align: center;
   font-size: 1.1em;
 }
@@ -34,28 +33,11 @@
   text-align: center;
 }
 
-
 #userSocialMedia section,
-
-
 #userSocialMedia p {
   text-align: left;
 }
 
-<<<<<<< HEAD
-#userSocialMedia #goButton button {
-  width: 50%;
-  margin: 2em 1em;
-  padding: 13px;
-  background-color: var(--mainColor);
-  border: 3px solid white;
-  border-radius: 100px;
-  font-size: 1.3em;
-  color: white;
-  cursor: pointer;
-}
-=======
-@media(max-width:600px) {
+/* @media(max-width:600px) {
   .landingPage {}
-}
->>>>>>> 0853ed9da61fea7bae5caee85a1a815a23357cb3
+} */
