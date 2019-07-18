@@ -16,17 +16,19 @@ export default class Landing extends Component {
           your name!
         </p>
         <div className="usersName">
-          <Input inputType="text" placeholder="Your Name!" />
+          <Input placeholder="Your Name!" />
         </div>
 
         <div id="userSocialMedia">
           <p>Optional</p>
-          <section>
-            <Input inputType="text" placeholder="Instagram Handle" />
-            <Input inputType="text" placeholder="Twitter Handle" />
+          <section className="SocialInputs">
+            <Input placeholder="Instagram Handle" />
+            <Input placeholder="Twitter Handle" />
           </section>
           <div id="goButton">
-            <Button clicked={this.vote}>Let's Go!</Button>
+            <Button clicked={this.vote} landingBtn="Custom">
+              Let's Go <span>>></span>
+            </Button>
           </div>
         </div>
       </div>

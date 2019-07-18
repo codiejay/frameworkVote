@@ -1,16 +1,26 @@
 .Button {
-
-    cursor: pointer;
-    background: #ff512f;
-    color: white;
-    outline: none;
-    padding: 10px;
-    border-radius: 15px;
-    border: 2px solid;
-    transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background: #ff512f;
+  border: 1px solid;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  margin: 30px 0 15px 0;
+  max-width: 120px;
 }
-
+.Custom {
+  border: none;
+  font-size: 18px;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.Custom span {
+  display: none;
+  opacity: 0;
+}
+.Custom:hover span {
+  display: inherit;
+  opacity: 1;
+}
 .Button:hover {
-    background: white;
-    color: #ff512f;
+  background: white;
+  color: #ff512f;
 }

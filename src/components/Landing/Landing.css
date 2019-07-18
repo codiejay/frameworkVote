@@ -12,11 +12,13 @@
 
 .landingPage {
   color: var(--mainColor);
-  padding: 10px;
+  background-color: #ffffffe3;
+  padding: 10px 30px;
   margin: auto;
   border: 2px solid #ff512f;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 15px;
+  max-width: 700px;
 }
 
 .landingPage h2 {
@@ -25,7 +27,6 @@
 }
 
 .landingPage p {
-
   text-align: center;
   font-size: 1.1em;
 }
@@ -33,15 +34,44 @@
 .usersName {
   text-align: center;
 }
-
-
-#userSocialMedia section,
-
+input {
+  outline: none;
+  border: 1px solid #ff512f;
+  color: #4e4e4e;
+  margin: 20px 15px;
+  padding: 5px 20px;
+  background: aliceblue;
+  border-radius: 20px;
+}
 
 #userSocialMedia p {
   text-align: left;
+  margin-bottom: 10px;
+}
+.SocialInputs {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#goButton {
+  margin: 20px 0;
+}
+button {
+  cursor: pointer;
+  background: #ff512f;
+  color: white;
+  outline: none;
+  padding: 7px 20px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
 
-@media(max-width:600px) {
-  .landingPage {}
+@media (max-width: 600px) {
+  .SocialInputs {
+    flex-direction: column;
+    height: auto;
+  }
 }
