@@ -17,9 +17,21 @@ class App extends Component {
     const voters = [],
       reactVotes = [],
       vueVotes = [];
+    // Selecting with query
+    database
+      .collection('votes')
+      .where('voteFor', '==', 'ReactJs')
+      .get()
+      .then(docs => {
+        docs.forEach(doc => {
+          console.log(doc.data());
+        });
+      });
+
     // TO select a specific document .doc("doc name") to .collection
     database
       .collection('votes')
+      .where('voteFor', '==', 'ReactJs')
       .get()
       .then(docs => {
         docs.forEach(doc => {
