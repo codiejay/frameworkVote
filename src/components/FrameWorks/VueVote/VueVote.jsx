@@ -18,11 +18,6 @@ class VueVote extends React.Component {
           <img className={classes.Image} src={vue} alt="React Svg" />
           <Button onClick={this.handleCastVote}>Vue</Button>
         </div>
-        <div className={classes.Percentage}>
-          <div className={classes.Water}>
-            <div className={classes.Wave} />
-          </div>
-        </div>
         <audio className={classes.Audio} src={sound} />
       </div>
     );

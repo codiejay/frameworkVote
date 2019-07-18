@@ -1,6 +1,6 @@
 .Wrapper {
   text-align: center;
-  margin: 0 30px;
+  margin: 0 50px;
   display: flex;
 }
 .FlexMain {
@@ -16,24 +16,27 @@
   display: none;
 }
 
-.Percentage {
+/* PREDEFINED CLASSES FOR FUTURE FUNCTIONALITIES */
+
+/* .Percentage {
   width: 30px;
-  /* animation: increse 4s linear forwards; */
-  border: 1px solid black;
+  animation: increase 4s linear forwards;
   transform: scaleY(1) translateY(-30px);
   transform-origin: bottom;
   position: relative;
   margin: 0 30px;
-  border-radius: 30px;
-  overflow: hidden;
 }
-.Percentage::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  left: -2px;
-  transform-origin: bottom;
-  border: 1px solid black;
+
+@keyframes increase {
+  0% {
+    transform: scaleY(0.6) translateY(-30px);
+  }
+  100% {
+    transform: scaleY(1) translateY(-30px);
+  }
+}
+.Perc {
+  transform: scaleY(0.6);
 }
 .Water {
   position: absolute;
@@ -45,6 +48,7 @@
 .Water .Wave {
   content: '';
   position: absolute;
+  border-radius: 0 0 30px 30px;
   top: 0;
   left: 0;
   bottom: 0;
@@ -61,4 +65,4 @@
   to {
     background-position-x: 200px;
   }
-}
+} */
