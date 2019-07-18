@@ -13,11 +13,6 @@ class ReactVote extends React.Component {
   render() {
     return (
       <div className={classes.Wrapper}>
-        <div className={classes.Percentage}>
-          <div className={classes.Water}>
-            <div className={classes.Wave} />
-          </div>
-        </div>
         <div className={classes.FlexMain}>
           <img className={classes.Image} src={react} alt="React Svg" />
           <Button onClick={this.handleCastVote}>React</Button>
