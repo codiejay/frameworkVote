@@ -3,6 +3,7 @@ import { Consumer } from '../../context';
 import vue from '../../assets/vue.svg';
 import react from '../../assets/react.svg';
 import classes from './Result.module.css';
+
 const Result = () => {
   return (
     <Consumer>

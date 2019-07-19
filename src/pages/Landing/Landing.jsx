@@ -10,12 +10,18 @@ class Landing extends React.Component {
     twitterHandle: '',
     voted: false
   };
+
+  // Function that is bind to all inputs
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
   };
+
+  // This get called when user click the "Let's Go" Button
+
   handleNewUser = dispatch => {
     const { Name, instagramHandle, twitterHandle } = this.state;
     const user = {
@@ -25,11 +31,19 @@ class Landing extends React.Component {
       voteFor: '',
       time: new Date().toUTCString()
     };
+
+    //  Getting voted from localStorage if it already stored in localStorage and storing it in a variable
     const voted = localStorage.getItem('voted');
+
+    // checking if the user has voted before to output error
     if (voted) {
       this.setState({ voted: true });
+      setTimeout(() => this.setState({ voted: false }), 4000);
     }
+    // Getting user IP from localStorage if it already stored in localStorage and storing it in a variable
     const myIp = localStorage.getItem('IP');
+
+    // checking if the user has voted before
     if (Name) {
       if (!myIp) {
         dispatch({ type: 'CHANGE_ROUTE', payload: 'vote page' });
@@ -38,6 +52,7 @@ class Landing extends React.Component {
     }
   };
   render() {
+    // Destructuring
     const { Name, instagramHandle, twitterHandle, voted } = this.state;
     return (
       <Consumer>
