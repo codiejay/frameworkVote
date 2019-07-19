@@ -1,7 +1,7 @@
 import React from 'react';
-import '../Landing/Landing.css';
+import './Landing.css';
 // import Input from '../UI/Input/Input';
-import Button from '../UI/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import { Link } from 'react-router-dom';
 
 class Landing extends React.Component {
@@ -22,7 +22,8 @@ class Landing extends React.Component {
       Name,
       instagramHandle,
       twitterHandle,
-      voteFor: ''
+      voteFor: '',
+      time: new Date().toUTCString()
     };
     sessionStorage.setItem('user', JSON.stringify(user));
   };

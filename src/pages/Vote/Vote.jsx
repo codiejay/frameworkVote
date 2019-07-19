@@ -2,18 +2,16 @@ import React from 'react';
 import classes from './Vote.module.css';
 import react from '../../../src/assets/react.svg';
 import vue from '../../../src/assets/vue.svg';
-import Framework from '../FrameWorks/Framework';
+import Framework from '../../components/FrameWorks/Framework';
 import { Consumer } from '../../context';
 import { database } from '../../firebaseConfig';
 class Vote extends React.Component {
-  handleCastVote = (dispatch, e, vote) => {
+  handleCastVote = (dispatch, vote) => {
     const voters = [],
       reactVotes = [],
       vueVotes = [];
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     currentUser.voteFor = vote;
-    console.log('Event', e);
-    console.log('Dispatch', dispatch);
 
     database
       .collection('votes')
@@ -43,13 +41,15 @@ class Vote extends React.Component {
     audio.currentTime = 0;
     audio.play();
   };
-  handleReactVotes = (dispatch, e) => {
+  handleReactVotes = dispatch => {
     const vote = 'ReactJs';
-    this.handleCastVote(dispatch, e, vote);
+    setTimeout(() => this.props.history.push('/'), 600);
+    this.handleCastVote(dispatch, vote);
   };
-  handleVueVotes = (dispatch, e) => {
+  handleVueVotes = dispatch => {
     const vote = 'VueJs';
-    this.handleCastVote(dispatch, e, vote);
+    setTimeout(() => this.props.history.push('/'), 600);
+    this.handleCastVote(dispatch, vote);
   };
   render() {
     return (

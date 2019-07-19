@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from './context';
-import Landing from './components/Landing/Landing.jsx';
-import Vote from './components/Vote/Vote.jsx';
+import Landing from './pages/Landing/Landing.jsx';
+import Vote from './pages/Vote/Vote.jsx';
 
 import '../src/App.css';
 

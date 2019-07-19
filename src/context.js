@@ -43,7 +43,6 @@ export class Provider extends Component {
         docs.forEach(doc => {
           voters.push(doc.data());
         });
-        console.log(voters);
         this.setState({ voters: voters });
         for (let voter of voters) {
           if (voter.voteFor === 'ReactJs') {
