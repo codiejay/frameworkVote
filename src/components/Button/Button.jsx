@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './Button.module.css';
 const Button = props => {
-  const { clicked, landingBtn, onClick } = props;
+  const { landingBtn, onClick, handleNewUser } = props;
   return (
     <button
       className={landingBtn === 'Custom' ? classes.Custom : classes.Button}
-      onClick={clicked || onClick}
+      onClick={onClick || handleNewUser}
     >
       {' '}
       {props.children}

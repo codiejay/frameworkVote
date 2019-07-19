@@ -43,7 +43,14 @@ input {
   background: aliceblue;
   border-radius: 20px;
 }
-
+.Input {
+  font-size: 20px;
+}
+.Social {
+  font-size: 18px;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
 #userSocialMedia p {
   text-align: left;
   margin-bottom: 10px;
@@ -68,7 +75,24 @@ button {
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
 }
-
+.error {
+  font-weight: 200;
+  font-size: 25px;
+  animation: popUp 0.5s linear alternate;
+  animation-iteration-count: 3;
+  text-transform: capitalize;
+}
+@keyframes popUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @media (max-width: 600px) {
   .SocialInputs {
     flex-direction: column;
