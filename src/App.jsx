@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from './context';
 import Landing from './components/Landing/Landing.jsx';
 import Vote from './components/Vote/Vote.jsx';
 import { database } from './firebaseConfig.js';
@@ -12,30 +13,36 @@ class App extends Component {
     reactVotes: [],
     vueVotes: []
   };
-  handleAddVoter = () => {};
+  // handleAddVoter = () => {
+  //   const data = {
+  //     Name:
+  //   }
+  //   database.collection("votes").doc().set(data);
+  // };
+
   componentWillMount() {
     const voters = [],
       reactVotes = [],
       vueVotes = [];
     // Selecting with query
-    database
-      .collection('votes')
-      .where('voteFor', '==', 'ReactJs')
-      .get()
-      .then(docs => {
-        docs.forEach(doc => {
-          console.log(doc.data());
-        });
-      });
+    // database
+    //   .collection('votes')
+    //   .where('voteFor', '==', 'ReactJs')
+    //   .get()
+    //   .then(docs => {
+    //     docs.forEach(doc => {
+    //       console.log(doc.data());
+    //     });
+    //   });
 
     // TO select a specific document .doc("doc name") to .collection
     database
       .collection('votes')
-      .where('voteFor', '==', 'ReactJs')
       .get()
       .then(docs => {
         docs.forEach(doc => {
           // doc.data() is never undefined for query doc snapshots
+          console.log(doc.data());
           voters.push(doc.data());
         });
         this.setState({ voters: voters });
@@ -53,10 +60,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Route path="/" exact component={Landing} />
-        <Route path="/vote" exact component={Vote} />
-      </div>
+      <Provider>
+        <BrowserRouter>
+          <div className="App">
+            <Route path="/" exact component={Landing} />
+            <Route path="/vote" component={Vote} />
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
