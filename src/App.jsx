@@ -5,7 +5,6 @@ import Vote from './components/Vote/Vote.jsx';
 import { database } from './firebaseConfig.js';
 
 import '../src/App.css';
-
 class App extends Component {
   state = {
     voters: [],
