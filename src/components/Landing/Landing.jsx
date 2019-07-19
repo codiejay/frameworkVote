@@ -1,13 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../Landing/Landing.css';
-import Input from '../UI/Input/Input';
+// import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
+import { Link } from 'react-router-dom';
 
-export default class Landing extends Component {
-  vote = () => {
-    this.props.history.push('/vote');
+class Landing extends React.Component {
+  state = {
+    Name: '',
+    instagramHandle: '',
+    twitterHandle: ''
+  };
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  handleNewUser = () => {
+    const { Name, instagramHandle, twitterHandle } = this.state;
+    const user = {
+      Name,
+      instagramHandle,
+      twitterHandle,
+      voteFor: ''
+    };
+    sessionStorage.setItem('user', JSON.stringify(user));
   };
   render() {
+    const { Name, instagramHandle, twitterHandle } = this.state;
     return (
       <div className="landingPage">
         <h2>AYE, THERE DEV!</h2>
@@ -16,18 +36,41 @@ export default class Landing extends Component {
           your name!
         </p>
         <div className="usersName">
-          <Input placeholder="Your Name!" />
+          <input
+            placeholder="Your Name!"
+            value={Name}
+            name="Name"
+            onChange={this.handleChange}
+          />
         </div>
 
         <div id="userSocialMedia">
           <p>Optional</p>
           <section className="SocialInputs">
-            <Input placeholder="Instagram Handle" />
-            <Input placeholder="Twitter Handle" />
+            <input
+              placeholder="Instagram Handle"
+              value={instagramHandle}
+              name="instagramHandle"
+              onChange={this.handleChange}
+            />
+            <input
+              placeholder="Twitter Handle"
+              value={twitterHandle}
+              name="twitterHandle"
+              onChange={this.handleChange}
+            />
           </section>
           <div id="goButton">
-            <Button clicked={this.vote} landingBtn="Custom">
-              Let's Go <span>>></span>
+            <Button landingBtn="Custom" handleNewUser={this.handleNewUser}>
+              {Name ? (
+                <Link to="/vote">
+                  Let's Go <span>>></span>
+                </Link>
+              ) : (
+                <Link to="/">
+                  Let's Go <span>>></span>
+                </Link>
+              )}
             </Button>
           </div>
         </div>
@@ -35,3 +78,4 @@ export default class Landing extends Component {
     );
   }
 }
+export default Landing;
