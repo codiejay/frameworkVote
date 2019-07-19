@@ -1,14 +1,17 @@
 import React from 'react';
 import classes from './Input.module.css';
-const Input = ({ placeholder }) => {
+const Input = ({ placeholder, name, value, handleChange }) => {
   return (
     <div>
       <input
+        name={name}
+        value={value}
         className={
           placeholder === 'Your Name!' ? classes.Input : classes.Social
         }
         type="text"
         placeholder={placeholder}
+        onChange={handleChange}
       />
     </div>
   );
