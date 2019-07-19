@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { database } from './firebaseConfig.js';
 const Context = React.createContext();
+console.log(Context);
 const reducer = (state, action) => {
+  // console.log(action);
   switch (action.type) {
     case 'ADD_VOTE':
       return {
@@ -17,6 +19,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
 export class Provider extends Component {
   state = {
     voters: [],
@@ -27,7 +30,6 @@ export class Provider extends Component {
   };
   componentWillMount() {
     const voters = [];
-
     database
       .collection('votes')
       .get()
