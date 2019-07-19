@@ -6,17 +6,12 @@ const reducer = (state, action) => {
     case 'ADD_VOTE':
       return {
         ...state,
-        votes: action.payload
+        voters: action.payload
       };
-    case 'ADD_REACT_VOTE':
+    case 'CHANGE_ROUTE':
       return {
         ...state,
-        reactVotes: action.payload
-      };
-    case 'ADD_VUE_VOTE':
-      return {
-        ...state,
-        vueVotes: action.payload
+        route: action.payload
       };
     default:
       return state;
@@ -25,16 +20,13 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     voters: [],
-    reactVotes: [],
-    vueVotes: [],
+    route: 'landing',
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
   };
-  componentDidMount() {
-    const voters = [],
-      reactVotes = [],
-      vueVotes = [];
+  componentWillMount() {
+    const voters = [];
 
     database
       .collection('votes')
@@ -43,15 +35,10 @@ export class Provider extends Component {
         docs.forEach(doc => {
           voters.push(doc.data());
         });
-        this.setState({ voters: voters });
-        for (let voter of voters) {
-          if (voter.voteFor === 'ReactJs') {
-            reactVotes.push(voter);
-          } else {
-            vueVotes.push(voter);
-          }
-        }
-        this.setState({ reactVotes: reactVotes, vueVotes: vueVotes });
+
+        this.setState({
+          voters: voters
+        });
       })
       .catch(err => console.log(err));
   }
