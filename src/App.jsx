@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Provider } from './context';
+import { Consumer, Provider } from './context';
 import Landing from './pages/Landing/Landing.jsx';
 import Vote from './pages/Vote/Vote.jsx';
 
 import '../src/App.css';
+import Result from './pages/Result/Result';
 
 class App extends Component {
   render() {
     return (
       <Provider>
-        <BrowserRouter>
-          <div className="App">
-            <Route path="/" exact component={Landing} />
-            <Route path="/vote" component={Vote} />
-          </div>
-        </BrowserRouter>
+        <Consumer>
+          {value => {
+            const { route } = value;
+
+            return (
+              <div className="App">
+                {route === 'landing' ? (
+                  <Landing />
+                ) : route === 'vote page' ? (
+                  <Vote />
+                ) : (
+                  <Result />
+                )}
+              </div>
+            );
+          }}
+        </Consumer>
       </Provider>
     );
   }

@@ -5,11 +5,10 @@ import vue from '../../../src/assets/vue.svg';
 import Framework from '../../components/FrameWorks/Framework';
 import { Consumer } from '../../context';
 import { database } from '../../firebaseConfig';
+
 class Vote extends React.Component {
   handleCastVote = (dispatch, vote) => {
-    const voters = [],
-      reactVotes = [],
-      vueVotes = [];
+    const voters = [];
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     currentUser.voteFor = vote;
 
@@ -25,30 +24,41 @@ class Vote extends React.Component {
         docs.forEach(doc => {
           voters.push(doc.data());
         });
-        for (let voter of voters) {
-          if (voter.voteFor === 'ReactJs') {
-            reactVotes.push(voter);
-          } else {
-            vueVotes.push(voter);
-          }
-        }
-        dispatch({ type: 'ADD_REACT_VOTE', payload: reactVotes });
-        dispatch({ type: 'ADD_VUE_VOTE', payload: vueVotes });
         dispatch({ type: 'ADD_VOTE', payload: voters });
+        setTimeout(
+          () => dispatch({ type: 'CHANGE_ROUTE', payload: 'result' }),
+          1300
+        );
       });
 
+    window.RTCPeerConnection =
+      window.RTCPeerConnection ||
+      window.mozRTCPeerConnection ||
+      window.webkitRTCPeerConnection; //compatibility for Firefox and chrome
+    const pc = new RTCPeerConnection({ iceServers: [] }),
+      noop = function() {};
+    pc.createDataChannel(''); //create a bogus data channel
+    pc.createOffer(pc.setLocalDescription.bind(pc), noop); // create offer and set local description
+    pc.onicecandidate = ice => {
+      if (ice && ice.candidate && ice.candidate.candidate) {
+        const IP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(
+          ice.candidate.candidate
+        )[1];
+        localStorage.setItem('IP', IP);
+        pc.onicecandidate = noop;
+      }
+    };
+    localStorage.setItem('voted', true);
     const audio = document.querySelector('audio');
     audio.currentTime = 0;
     audio.play();
   };
   handleReactVotes = dispatch => {
     const vote = 'ReactJs';
-    setTimeout(() => this.props.history.push('/'), 600);
     this.handleCastVote(dispatch, vote);
   };
   handleVueVotes = dispatch => {
     const vote = 'VueJs';
-    setTimeout(() => this.props.history.push('/'), 600);
     this.handleCastVote(dispatch, vote);
   };
   render() {

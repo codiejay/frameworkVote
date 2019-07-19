@@ -1,14 +1,14 @@
 import React from 'react';
 import './Landing.css';
-// import Input from '../UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
-import { Link } from 'react-router-dom';
+import { Consumer } from '../../context';
+import Button from '../../components/Button/Button';
 
 class Landing extends React.Component {
   state = {
     Name: '',
     instagramHandle: '',
-    twitterHandle: ''
+    twitterHandle: '',
+    voted: false
   };
   handleChange = e => {
     const { name, value } = e.target;
@@ -16,7 +16,7 @@ class Landing extends React.Component {
       [name]: value
     });
   };
-  handleNewUser = () => {
+  handleNewUser = dispatch => {
     const { Name, instagramHandle, twitterHandle } = this.state;
     const user = {
       Name,
@@ -25,57 +25,75 @@ class Landing extends React.Component {
       voteFor: '',
       time: new Date().toUTCString()
     };
-    sessionStorage.setItem('user', JSON.stringify(user));
+    const voted = localStorage.getItem('voted');
+    if (voted) {
+      this.setState({ voted: true });
+    }
+    const myIp = localStorage.getItem('IP');
+    if (Name) {
+      if (!myIp) {
+        dispatch({ type: 'CHANGE_ROUTE', payload: 'vote page' });
+        sessionStorage.setItem('user', JSON.stringify(user));
+      }
+    }
   };
   render() {
-    const { Name, instagramHandle, twitterHandle } = this.state;
+    const { Name, instagramHandle, twitterHandle, voted } = this.state;
     return (
-      <div className="landingPage">
-        <h2>AYE, THERE DEV!</h2>
-        <p>
-          It time to vote for your fav framework. But before that, let’s know
-          your name!
-        </p>
-        <div className="usersName">
-          <input
-            placeholder="Your Name!"
-            value={Name}
-            name="Name"
-            onChange={this.handleChange}
-          />
-        </div>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          return (
+            <div className="landingPage">
+              <h2>AYE, THERE DEV!</h2>
+              <p>
+                It time to vote for your fav framework. But before that, let’s
+                know your name!
+              </p>
+              <div className="usersName">
+                <input
+                  className="Input"
+                  placeholder="Your Name!"
+                  value={Name}
+                  name="Name"
+                  onChange={this.handleChange}
+                />
+              </div>
 
-        <div id="userSocialMedia">
-          <p>Optional</p>
-          <section className="SocialInputs">
-            <input
-              placeholder="Instagram Handle"
-              value={instagramHandle}
-              name="instagramHandle"
-              onChange={this.handleChange}
-            />
-            <input
-              placeholder="Twitter Handle"
-              value={twitterHandle}
-              name="twitterHandle"
-              onChange={this.handleChange}
-            />
-          </section>
-          <div id="goButton">
-            <Button landingBtn="Custom" handleNewUser={this.handleNewUser}>
-              {Name ? (
-                <Link to="/vote">
-                  Let's Go <span>>></span>
-                </Link>
-              ) : (
-                <Link to="/">
-                  Let's Go <span>>></span>
-                </Link>
-              )}
-            </Button>
-          </div>
-        </div>
-      </div>
+              <div id="userSocialMedia">
+                <p>Optional</p>
+                <section className="SocialInputs">
+                  <input
+                    className="Social"
+                    placeholder="Instagram Handle"
+                    value={instagramHandle}
+                    name="instagramHandle"
+                    onChange={this.handleChange}
+                  />
+                  <input
+                    className="Social"
+                    placeholder="Twitter Handle"
+                    value={twitterHandle}
+                    name="twitterHandle"
+                    onChange={this.handleChange}
+                  />
+                </section>
+                <div id="goButton">
+                  {voted ? (
+                    <h3 className="error">Seems like You've already Voted</h3>
+                  ) : null}
+                  <Button
+                    landingBtn="Custom"
+                    handleNewUser={this.handleNewUser.bind(this, dispatch)}
+                  >
+                    Let's Go <span>>></span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }
