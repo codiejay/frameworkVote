@@ -1,17 +1,29 @@
 .Vote {
   max-width: 700px;
+  width: 60%;
   background-color: #ffffffe3;
   padding: 20px 50px;
   border: 2px solid #ff512f;
   border-radius: 15px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.Title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  /* border: 1px solid black; */
+}
+.Title strong {
+  font-size: 2vw;
 }
 
 .PageTitle {
   color: #ff512f;
-  font-size: 40px;
+  font-size: 3vw;
   font-weight: 200;
-  margin-bottom: 20px;
   text-transform: uppercase;
 }
 
@@ -29,9 +41,29 @@
   text-transform: uppercase;
   word-spacing: 1px;
   letter-spacing: 1px;
+  font-size: 1.4vw;
 }
 
-.Title {
-  display: flex;
-  justify-content: space-between;
+.Spinner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0000004b;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.Spinner img {
+  width: 150px;
+}
+@media (max-width: 800px) {
+  .Vote {
+    padding: 20px 30px;
+  }
+
+  .Info {
+    font-size: 1.8vw;
+  }
 }

@@ -14,21 +14,22 @@
   color: var(--mainColor);
   background-color: #ffffffe3;
   padding: 10px 30px;
-  margin: auto;
   border: 2px solid #ff512f;
   text-align: center;
   border-radius: 15px;
-  max-width: 700px;
+  width: 60%;
+  /* max-width: 700px; */
 }
 
 .landingPage h2 {
-  font-size: 2.7em;
+  font-size: 4vw;
   text-align: center;
 }
 
 .landingPage p {
   text-align: center;
-  font-size: 1.1em;
+  font-size: 2vw;
+  padding: 10px 30px;
 }
 
 .usersName {
@@ -44,15 +45,18 @@ input {
   border-radius: 20px;
 }
 .Input {
-  font-size: 20px;
+  width: 60%;
+  font-size: 2.3vw;
 }
 .Social {
-  font-size: 18px;
-  max-width: 300px;
+  font-size: 1.8vw;
+  width: 55%;
+  /* max-width: 300px; */
   margin-bottom: 20px;
 }
 #userSocialMedia p {
   text-align: left;
+  font-size: 2.4vw;
   margin-bottom: 10px;
 }
 .SocialInputs {
@@ -74,6 +78,7 @@ button {
   padding: 7px 20px;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
+  margin-top: 20px;
 }
 .error {
   font-weight: 200;
@@ -93,9 +98,50 @@ button {
     transform: scale(1);
   }
 }
+@media (max-width: 800px) {
+  .landingPage {
+    padding: 10px 10px;
+    width: 80%;
+  }
+}
 @media (max-width: 600px) {
+  .landingPage {
+    padding: 10px 10px;
+    width: 90%;
+  }
+  .landingPage p {
+    margin-bottom: 10px;
+  }
+  #userSocialMedia p {
+    text-align: center;
+  }
+  input {
+    margin: 0;
+  }
   .SocialInputs {
     flex-direction: column;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    align-content: flex-end;
+    justify-self: flex-end;
+    align-self: flex-end;
+    align-items: center;
     height: auto;
+  }
+
+  .Input {
+    margin: auto;
+    margin-bottom: 10px;
+    width: 80%;
+    /* font-size: 20px; */
+  }
+  .Social {
+    /* font-size: 18px; */
+    width: 70%;
+    /* max-width: 300px; */
+    margin-bottom: 20px;
+  }
+  button {
+    margin: 0;
   }
 }
