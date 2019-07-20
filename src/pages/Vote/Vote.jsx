@@ -12,11 +12,13 @@ class Vote extends React.Component {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     currentUser.voteFor = vote;
 
+    // Sends currentUser user info and their vote to firebase
     database
       .collection('votes')
       .doc()
       .set(currentUser);
 
+    // Get all user info and their vote to firebase
     database
       .collection('votes')
       .get()
@@ -31,24 +33,31 @@ class Vote extends React.Component {
         );
       });
 
+    // To get User IP Start of slack overflow code
+    const IP = [];
     window.RTCPeerConnection =
       window.RTCPeerConnection ||
       window.mozRTCPeerConnection ||
-      window.webkitRTCPeerConnection; //compatibility for Firefox and chrome
-    const pc = new RTCPeerConnection({ iceServers: [] }),
-      noop = function() {};
-    pc.createDataChannel(''); //create a bogus data channel
-    pc.createOffer(pc.setLocalDescription.bind(pc), noop); // create offer and set local description
-    pc.onicecandidate = ice => {
-      if (ice && ice.candidate && ice.candidate.candidate) {
-        const IP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(
-          ice.candidate.candidate
-        )[1];
+      window.webkitRTCPeerConnection;
+
+    if (window.RTCPeerConnection) {
+      const pc = new RTCPeerConnection(),
+        noop = function() {};
+      pc.createDataChannel('');
+      pc.createOffer(pc.setLocalDescription.bind(pc), noop);
+      pc.onicecandidate = event => {
+        if (event.candidate) {
+          IP.push(event.candidate.address);
+        }
         localStorage.setItem('IP', IP);
-        pc.onicecandidate = noop;
-      }
-    };
+      };
+    }
+    // End of slack overflow code
+
+    // This gonna be use later to tell user that they've voted already
     localStorage.setItem('voted', true);
+
+    // Plays the sound when user votes
     const audio = document.querySelector('audio');
     audio.currentTime = 0;
     audio.play();
