@@ -10,12 +10,32 @@
   justify-content: center;
 }
 .Image {
-  max-height: 160px;
+  max-height: 150px;
 }
 .Audio {
   display: none;
 }
-
+@media (max-width: 970px) {
+  .Wrapper {
+    margin: 0 40px;
+  }
+  .Image {
+    max-height: 100px;
+  }
+}
+@media (max-width: 800px) {
+  .Image {
+    max-height: 90px;
+  }
+}
+@media (max-width: 650px) {
+  .Wrapper {
+    margin: 0 30px;
+  }
+  .Image {
+    max-height: 70px;
+  }
+}
 /* PREDEFINED CLASSES FOR FUTURE FUNCTIONALITIES */
 
 /* .Percentage {

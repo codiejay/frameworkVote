@@ -2,15 +2,26 @@ import React from 'react';
 import classes from './Vote.module.css';
 import react from '../../../src/assets/react.svg';
 import vue from '../../../src/assets/vue.svg';
+import spinner from '../../../src/assets/spinner.gif';
 import Framework from '../../components/FrameWorks/Framework';
 import { Consumer } from '../../context';
 import { database } from '../../firebaseConfig';
 
 class Vote extends React.Component {
+  state = {
+    isLoading: false
+  };
   handleCastVote = (dispatch, vote) => {
     const voters = [];
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     currentUser.voteFor = vote;
+
+    // Plays the sound when user votes
+    const audio = document.querySelector('audio');
+    audio.currentTime = 0;
+    audio.play();
+
+    this.setState({ isLoading: true });
 
     // Sends currentUser user info and their vote to firebase
     database
@@ -56,11 +67,6 @@ class Vote extends React.Component {
 
     // This gonna be use later to tell user that they've voted already
     localStorage.setItem('voted', true);
-
-    // Plays the sound when user votes
-    const audio = document.querySelector('audio');
-    audio.currentTime = 0;
-    audio.play();
   };
   handleReactVotes = dispatch => {
     const vote = 'ReactJs';
@@ -74,17 +80,17 @@ class Vote extends React.Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
-
+          const { dispatch, voters } = value;
+          const indexOfLastVote = voters.length - 1;
           let nbr = 0;
-          value.voters.map(pers => {
+          voters.map(pers => {
             return (nbr = nbr + 1);
           });
           return (
             <div className={classes.Vote}>
               <div className={classes.Title}>
                 <h1 className={classes.PageTitle}>Vote Count</h1>
-                <p style={{ fontSize: '1rem' }}>{nbr} People Voted</p>
+                <strong>{nbr} People Voted</strong>
               </div>
 
               <div className={classes.Main}>
@@ -102,8 +108,15 @@ class Vote extends React.Component {
                 />
               </div>
               <p className={classes.Info}>
-                Last Dev to vote: {'James'} => {'React Js'}{' '}
+                Last Dev to vote:{' '}
+                <span>{voters[indexOfLastVote].Name || 'Nobody yet'}</span> =>{' '}
+                <span>{voters[indexOfLastVote].voteFor || 'Nothing yet'}</span>{' '}
               </p>
+              {this.state.isLoading ? (
+                <div className={classes.Spinner}>
+                  <img src={spinner} alt="Loader" />
+                </div>
+              ) : null}
             </div>
           );
         }}
