@@ -15,7 +15,7 @@ class Vote extends React.Component {
     // Sends currentUser user info and their vote to firebase
     database
       .collection('votes')
-      .doc()
+      .doc(currentUser.time)
       .set(currentUser);
 
     // Get all user info and their vote to firebase
@@ -75,9 +75,18 @@ class Vote extends React.Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
+
+          let nbr = 0;
+          value.voters.map(pers => {
+            return (nbr = nbr + 1);
+          });
           return (
             <div className={classes.Vote}>
-              <h1 className={classes.PageTitle}>Vote Count</h1>
+              <div className={classes.Title}>
+                <h1 className={classes.PageTitle}>Vote Count</h1>
+                <p style={{ fontSize: '1rem' }}>{nbr} People Voted</p>
+              </div>
+
               <div className={classes.Main}>
                 <Framework
                   name="React"
