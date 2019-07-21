@@ -12,6 +12,7 @@
   text-align: center;
   margin: 20px 40px;
   display: flex;
+  align-items: flex-end;
 }
 
 .FlexMain {
