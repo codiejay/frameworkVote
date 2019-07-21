@@ -14,7 +14,6 @@
   color: var(--mainColor);
   background-color: #ffffffe3;
   padding: 10px 30px;
-  border: 2px solid #ff512f;
   text-align: center;
   border-radius: 15px;
   width: 60%;
@@ -35,6 +34,7 @@
 .usersName {
   text-align: center;
 }
+
 input {
   outline: none;
   border: 1px solid #ff512f;
@@ -44,21 +44,25 @@ input {
   background: aliceblue;
   border-radius: 20px;
 }
+
 .Input {
   width: 60%;
   font-size: 2.3vw;
 }
+
 .Social {
   font-size: 1.8vw;
   width: 55%;
   /* max-width: 300px; */
   margin-bottom: 20px;
 }
+
 #userSocialMedia p {
   text-align: left;
   font-size: 2.4vw;
   margin-bottom: 10px;
 }
+
 .SocialInputs {
   display: flex;
   width: 100%;
@@ -67,9 +71,11 @@ input {
   align-items: center;
   text-align: center;
 }
+
 #goButton {
   margin: 20px 0;
 }
+
 button {
   cursor: pointer;
   background: #ff512f;
@@ -80,6 +86,7 @@ button {
   transition: all 0.3s ease-in-out;
   margin-top: 20px;
 }
+
 .error {
   font-weight: 200;
   font-size: 25px;
@@ -87,37 +94,46 @@ button {
   animation-iteration-count: 3;
   text-transform: capitalize;
 }
+
 @keyframes popUp {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.4);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 @media (max-width: 800px) {
   .landingPage {
     padding: 10px 10px;
     width: 80%;
   }
 }
+
 @media (max-width: 600px) {
   .landingPage {
     padding: 10px 10px;
     width: 90%;
   }
+
   .landingPage p {
     margin-bottom: 10px;
   }
+
   #userSocialMedia p {
     text-align: center;
   }
+
   input {
     margin: 0;
   }
+
   .SocialInputs {
     flex-direction: column;
     justify-content: flex-end;
@@ -135,12 +151,14 @@ button {
     width: 80%;
     /* font-size: 20px; */
   }
+
   .Social {
     /* font-size: 18px; */
     width: 70%;
     /* max-width: 300px; */
     margin-bottom: 20px;
   }
+
   button {
     margin: 0;
   }

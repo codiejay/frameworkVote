@@ -5,7 +5,11 @@
   justify-content: center;
   align-items: center;
   padding: 0 30px;
+  background: #8360c3;
+  background: -webkit-linear-gradient(to right, #2ebf91, #60b8e0);
+  background: linear-gradient(to right, #2ebf91, #60b8e0);
 }
+
 a {
   text-decoration: none;
   color: white;

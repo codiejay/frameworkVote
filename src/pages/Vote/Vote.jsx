@@ -16,11 +16,6 @@ class Vote extends React.Component {
     const currentUser = JSON.parse(sessionStorage.getItem('user'));
     currentUser.voteFor = vote;
 
-    // Plays the sound when user votes
-    const audio = document.querySelector('audio');
-    audio.currentTime = 0;
-    audio.play();
-
     this.setState({ isLoading: true });
 
     // Sends currentUser user info and their vote to firebase
