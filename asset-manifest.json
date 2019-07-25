@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/codiejay/frameworkVote/static/css/main.4435d4b8.chunk.css",
+    "main.js": "/codiejay/frameworkVote/static/js/main.78adb98a.chunk.js",
+    "main.js.map": "/codiejay/frameworkVote/static/js/main.78adb98a.chunk.js.map",
+    "runtime~main.js": "/codiejay/frameworkVote/static/js/runtime~main.97ee8d4f.js",
+    "runtime~main.js.map": "/codiejay/frameworkVote/static/js/runtime~main.97ee8d4f.js.map",
+    "static/js/2.ff10e99f.chunk.js": "/codiejay/frameworkVote/static/js/2.ff10e99f.chunk.js",
+    "static/js/2.ff10e99f.chunk.js.map": "/codiejay/frameworkVote/static/js/2.ff10e99f.chunk.js.map",
+    "index.html": "/codiejay/frameworkVote/index.html",
+    "precache-manifest.57afe40bbabe8a83d51f1abb143d2bf4.js": "/codiejay/frameworkVote/precache-manifest.57afe40bbabe8a83d51f1abb143d2bf4.js",
+    "service-worker.js": "/codiejay/frameworkVote/service-worker.js",
+    "static/css/main.4435d4b8.chunk.css.map": "/codiejay/frameworkVote/static/css/main.4435d4b8.chunk.css.map",
+    "static/media/react.svg": "/codiejay/frameworkVote/static/media/react.9a28da9f.svg",
+    "static/media/spinner.gif": "/codiejay/frameworkVote/static/media/spinner.914933fe.gif",
+    "static/media/vue.svg": "/codiejay/frameworkVote/static/media/vue.22efb7c2.svg"
+  }
+}
